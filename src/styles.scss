@@ -1,1 +1,289 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'assets/sass/variables';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: $font-family-base;
+  color: $dark-color;
+  background-color: $color-white;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-darker-gray;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-dark {
+  color: var(--dark-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-danger {
+  color: var(--danger-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.card {
+  margin: 0.7rem 0;
+  padding: 1rem;
+  border: $color-light-gray 1px dotted;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-content {
+    margin-bottom: .5rem;
+  }
+}
+
+.list {
+  margin: 0.5rem 0;
+
+  li {
+    padding-bottom: 0.3rem;
+  }
+}
+
+.btn {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  color: $dark-color;
+  background: var(--light-color);
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  transition: opacity $transition-duration ease-in;
+
+  &:disabled {
+    color: $color-black;
+    background: var(--light-color);
+    cursor: not-allowed;
+  }
+}
+
+.btn-link {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-sm {
+  margin-right: 0.2rem;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: $dark-color;
+  background: var(--light-color);
+  border-radius: 5px;
+}
+
+.alert {
+  margin: 1rem 0;
+  padding: 0.7rem;
+  color: $dark-color;
+  background: var(--light-color);
+  opacity: 0.9;
+}
+
+.btn-primary,
+.bg-primary,
+.badge-primary,
+.alert-primary {
+  color: $color-white;
+  background: var(--primary-color);
+}
+
+.btn-light,
+.bg-light,
+.badge-light,
+.alert-light {
+  color: $dark-color;
+  background: var(--light-color);
+}
+
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+  color: $color-white;
+  background: var(--dark-color);
+}
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+  color: $color-white;
+  background: var(--danger-color);
+}
+
+.btn-success,
+.bg-success,
+.badge-success,
+.alert-success {
+  color: $color-white;
+  background: var(--success-color);
+}
+
+.btn-white,
+.bg-white,
+.badge-white,
+.alert-white {
+  color: $dark-color;
+  background: $color-white;
+  border: $color-light-gray solid 1px;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.bg-light,
+.badge-light {
+  border: $color-light-gray solid 1px;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+
+.form-control {
+  display: block;
+  margin-bottom: .8rem;
+  color: $color-dark-gray;
+
+  &.invalid {
+    color: var(--primary-color);
+
+    input {
+      border-color: var(--primary-color);
+    }
+  }
+
+  .validation {
+    color: var(--primary-color);
+  }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid $color-light-gray;
+}
+
+input[type='submit'],
+button {
+  font: inherit;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+table th {
+  background: var(--light-color);
+}
+
+.navbar {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.7rem 2rem;
+  opacity: 0.9;
+
+  &.main {
+    justify-content: center;
+    border-bottom: 1px solid var(--dark-color);
+  }
+
+  ul {
+    display: flex;
+  }
+
+  li.active a {
+    font-weight: 700;
+    color: var(--dark-color);
+    cursor: default;
+  }
+
+  a {
+    margin: 0 0.25rem;
+    padding: 0.45rem;
+    color: $color-white;
+
+    &:hover {
+      color: var(--light-color);
+    }
+  }
+}

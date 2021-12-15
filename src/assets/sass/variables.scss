@@ -1,0 +1,22 @@
+$primary-color: #dc3545 !default;
+$dark-color: #333333 !default;
+$light-color: #f4f4f4 !default;
+$color-light-gray: #cccccc !default;;
+$color-dark-gray: #888888 !default;;
+$color-darker-gray: #666666 !default;
+$color-white: #ffffff !default;
+$danger-color: #dc3545 !default;
+$color-black: #000000 !default;
+$success-color: #28a745 !default;
+
+:root {
+  --primary-color: $primary-color;
+  --dark-color: $dark-color;
+  --light-color: $light-color;
+  --danger-color: $danger-color;
+  --success-color: $success-color;
+}
+
+$transition-duration: 0.2s !default;
+
+$font-family-base: 'Roboto', sans-serif !default;;
