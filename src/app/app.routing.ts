@@ -3,15 +3,20 @@ import type { Routes } from '@angular/router';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 
 import type { AdminModule } from './admin/admin.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { PostComponent } from './pages/post/post.component';
+import { AppLayoutComponent } from './shared/components/app-layout/app-layout.component';
+import { HomeComponent } from './shared/pages/home/home.component';
+import { PostComponent } from './shared/pages/post/post.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: AppComponent,
+		component: AppLayoutComponent,
 		children: [
+			{
+				path: '',
+				redirectTo: '/',
+				pathMatch: 'full',
+			},
 			/* Home page */
 			{
 				path: '',
@@ -19,7 +24,7 @@ const routes: Routes = [
 			},
 			/* Post page */
 			{
-				path: 'post',
+				path: 'post/:id',
 				component: PostComponent,
 			},
 		],
