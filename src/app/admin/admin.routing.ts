@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import type { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
-import { PostState } from '../enums/post-state.enum';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { CreateComponent } from './pages/create/create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -32,7 +31,7 @@ const routes: Routes = [
 			},
 			/*  Edit page */
 			{
-				path: PostState.edit,
+				path: 'post/:id/edit',
 				component: EditComponent,
 			},
 			/*  Create page */

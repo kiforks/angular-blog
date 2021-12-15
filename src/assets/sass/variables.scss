@@ -10,11 +10,11 @@ $color-black: #000000 !default;
 $success-color: #28a745 !default;
 
 :root {
-  --primary-color: $primary-color;
-  --dark-color: $dark-color;
-  --light-color: $light-color;
-  --danger-color: $danger-color;
-  --success-color: $success-color;
+  --primary-color: #dc3545;
+  --dark-color: #333333;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
 
 $transition-duration: 0.2s !default;

@@ -3,15 +3,14 @@ import type { Routes } from '@angular/router';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 
 import type { AdminModule } from './admin/admin.module';
-import { PostState } from './enums/post-state.enum';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PostComponent } from './pages/post/post.component';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: MainLayoutComponent,
+		component: AppComponent,
 		children: [
 			/* Home page */
 			{
@@ -20,7 +19,7 @@ const routes: Routes = [
 			},
 			/* Post page */
 			{
-				path: PostState.post,
+				path: 'post',
 				component: PostComponent,
 			},
 		],
