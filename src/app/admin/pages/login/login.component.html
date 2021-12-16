@@ -1,1 +1,44 @@
-<p>login works!</p>
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+	<h2>Login to the administration panel</h2>
+
+	<div class="form-control">
+		<label for="email">Email</label>
+		<input id="email" type="email" formControlName="email" />
+		<div
+			class="validation"
+			*ngIf="email.touched && email.invalid"
+			[ngClass]="{
+				invalid: email.touched && email.invalid
+			}"
+		>
+			<small *ngIf="email.errors!['required']">Email is required</small>
+
+			<small *ngIf="email.errors!['email']">Enter correct email</small>
+		</div>
+	</div>
+
+	<div class="form-control">
+		<label for="password">Password</label>
+		<input id="password" type="password" formControlName="password" />
+		<div
+			class="validation"
+			*ngIf="password.touched && password.invalid"
+			[ngClass]="{
+				invalid: password.touched && password.invalid
+			}"
+		>
+			<small *ngIf="password.errors!['required']">Password is required</small>
+
+			<small *ngIf="password.errors!['minlength']">
+				Password must contain at least
+				{{ password.errors.minlength.requiredLength }} numbers. Now
+				password has {{ password.errors.minlength.actualLength }}
+				numbers.
+			</small>
+		</div>
+	</div>
+
+	<button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+		Login
+	</button>
+</form>
