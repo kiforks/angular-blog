@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { AdminRouting } from './admin.routing';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { CreateComponent } from './pages/create/create.component';
@@ -17,6 +17,6 @@ import { LoginComponent } from './pages/login/login.component';
 		LoginComponent,
 		EditComponent,
 	],
-	imports: [AdminRouting, FormsModule, ReactiveFormsModule, CommonModule],
+	imports: [SharedModule, AdminRouting, FormsModule, ReactiveFormsModule],
 })
 export class AdminModule {}
