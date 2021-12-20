@@ -3,14 +3,14 @@ import type { Routes } from '@angular/router';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 
 import type { AdminModule } from './admin/admin.module';
-import { AppLayoutComponent } from './shared/components/app-layout/app-layout.component';
+import { AppComponent } from './app.component';
 import { HomeComponent } from './shared/pages/home/home.component';
 import { PostComponent } from './shared/pages/post/post.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: AppLayoutComponent,
+		component: AppComponent,
 		children: [
 			{
 				path: '',
