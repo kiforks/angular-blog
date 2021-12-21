@@ -8,6 +8,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
 	declarations: [
@@ -18,5 +19,6 @@ import { LoginComponent } from './pages/login/login.component';
 		EditComponent,
 	],
 	imports: [SharedModule, AdminRouting, FormsModule, ReactiveFormsModule],
+	providers: [AuthService],
 })
 export class AdminModule {}
