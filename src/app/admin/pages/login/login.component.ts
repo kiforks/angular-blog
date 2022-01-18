@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
 	public submitted = false;
 
-	constructor(private AuthService: AuthService, private router: Router) {}
+	constructor(public AuthService: AuthService, private router: Router) {}
 
 	public ngOnInit(): void {
 		this.form = new FormGroup({
@@ -52,12 +52,17 @@ export class LoginComponent implements OnInit {
 			password: this.form.value.password,
 		};
 
-		this.AuthService.login(user).subscribe((): void => {
-			this.form.reset();
+		this.AuthService.login(user).subscribe(
+			(): void => {
+				this.form.reset();
 
-			this.router.navigate(['/admin', 'dashboard']);
+				this.router.navigate(['/admin', 'dashboard']);
 
-			this.submitted = false;
-		});
+				this.submitted = false;
+			},
+			(): void => {
+				this.submitted = false;
+			}
+		);
 	}
 }

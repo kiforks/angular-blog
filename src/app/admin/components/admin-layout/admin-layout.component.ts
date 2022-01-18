@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth/auth.service';
 	styleUrls: ['./admin-layout.component.scss'],
 })
 export class AdminLayoutComponent {
-	constructor(private Router: Router, private AuthService: AuthService) {}
+	constructor(private Router: Router, public AuthService: AuthService) {}
 
 	public logout(event: Event): void {
 		event.preventDefault();
