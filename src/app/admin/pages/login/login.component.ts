@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
 	public email!: AbstractControl;
 	public password!: AbstractControl;
 
+	public submitted = false;
+
 	constructor(private AuthService: AuthService, private router: Router) {}
 
 	public ngOnInit(): void {
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 
+		this.submitted = true;
+
 		const user: User = {
 			email: this.form.value.email,
 			password: this.form.value.password,
@@ -52,6 +56,8 @@ export class LoginComponent implements OnInit {
 			this.form.reset();
 
 			this.router.navigate(['/admin', 'dashboard']);
+
+			this.submitted = false;
 		});
 	}
 }

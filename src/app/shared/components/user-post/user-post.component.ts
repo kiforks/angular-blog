@@ -1,4 +1,3 @@
-import type { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,8 +5,4 @@ import { Component } from '@angular/core';
 	templateUrl: './user-post.component.html',
 	styleUrls: ['./user-post.component.scss'],
 })
-export class UserPostComponent implements OnInit {
-	constructor() {}
-
-	ngOnInit(): void {}
-}
+export class UserPostComponent {}

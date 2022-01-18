@@ -1,4 +1,3 @@
-import type { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,8 +5,4 @@ import { Component } from '@angular/core';
 	templateUrl: './create.component.html',
 	styleUrls: ['./create.component.scss'],
 })
-export class CreateComponent implements OnInit {
-	constructor() {}
-
-	ngOnInit(): void {}
-}
+export class CreateComponent {}

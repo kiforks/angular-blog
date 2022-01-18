@@ -1,4 +1,3 @@
-import type { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,8 +5,4 @@ import { Component } from '@angular/core';
 	templateUrl: './edit.component.html',
 	styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
-	constructor() {}
-
-	ngOnInit(): void {}
-}
+export class EditComponent {}
