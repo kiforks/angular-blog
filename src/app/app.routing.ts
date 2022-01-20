@@ -27,6 +27,11 @@ const routes: Routes = [
 				path: 'post/:id',
 				component: PostComponent,
 			},
+			/* Redirect from a non-existent page */
+			{
+				path: '**',
+				redirectTo: '/',
+			},
 		],
 	},
 	/* Admin module lazy loading */
