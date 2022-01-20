@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { AdminRouting } from './admin.routing';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { AuthGuard } from './guards/auth/auth.guard';
 import { CreateComponent } from './pages/create/create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/edit/edit.component';
@@ -19,6 +20,6 @@ import { AuthService } from './services/auth/auth.service';
 		EditComponent,
 	],
 	imports: [SharedModule, AdminRouting, FormsModule, ReactiveFormsModule],
-	providers: [AuthService],
+	providers: [AuthService, AuthGuard],
 })
 export class AdminModule {}

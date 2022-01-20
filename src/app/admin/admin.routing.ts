@@ -3,6 +3,7 @@ import type { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+import { AuthGuard } from './guards/auth/auth.guard';
 import { CreateComponent } from './pages/create/create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/edit/edit.component';
@@ -28,16 +29,19 @@ const routes: Routes = [
 			{
 				path: 'dashboard',
 				component: DashboardComponent,
+				canActivate: [AuthGuard],
 			},
 			/*  Edit page */
 			{
 				path: 'post/:id/edit',
 				component: EditComponent,
+				canActivate: [AuthGuard],
 			},
-			/*  Create page */
+			/*   Create page */
 			{
 				path: 'create',
 				component: CreateComponent,
+				canActivate: [AuthGuard],
 			},
 		],
 	},

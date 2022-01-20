@@ -5,7 +5,7 @@ import {
 	FormGroup,
 	Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { User } from '../../../shared/interfaces/user.interface';
 import { AuthService } from '../../services/auth/auth.service';
@@ -19,12 +19,23 @@ export class LoginComponent implements OnInit {
 	public form!: FormGroup;
 	public email!: AbstractControl;
 	public password!: AbstractControl;
+	public message = '';
 
 	public submitted = false;
 
-	constructor(public AuthService: AuthService, private router: Router) {}
+	constructor(
+		public AuthService: AuthService,
+		private Router: Router,
+		private ActivatedRoute: ActivatedRoute
+	) {}
 
 	public ngOnInit(): void {
+		this.ActivatedRoute.queryParams.subscribe((params: Params) => {
+			if ('login' in params) {
+				this.message = 'Please enter email/password';
+			}
+		});
+
 		this.form = new FormGroup({
 			email: new FormControl(null, [
 				Validators.email,
@@ -56,7 +67,7 @@ export class LoginComponent implements OnInit {
 			(): void => {
 				this.form.reset();
 
-				this.router.navigate(['/admin', 'dashboard']);
+				this.Router.navigate(['/admin', 'dashboard']);
 
 				this.submitted = false;
 			},
