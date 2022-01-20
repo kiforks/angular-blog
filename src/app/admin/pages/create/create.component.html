@@ -1,1 +1,43 @@
-<p>create works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+	<h1>Create new post</h1>
+
+	<div class="form-control">
+		<label for="title">Post title</label>
+		<input id="title" type="text" formControlName="title" />
+		<div
+			class="validation"
+			*ngIf="title.touched && title.invalid"
+			[ngClass]="{
+				invalid: title.touched && title.invalid
+			}"
+		>
+			<small *ngIf="title.errors!['required']">Enter post title</small>
+		</div>
+	</div>
+
+	<div class="form-control">
+		<label>Post content</label>
+	</div>
+
+	<div class="form-control">
+		<label for="author">Post author</label>
+		<input id="author" type="text" formControlName="author" />
+		<div
+			class="validation"
+			*ngIf="author.touched && author.invalid"
+			[ngClass]="{
+				invalid: author.touched && author.invalid
+			}"
+		>
+			<small *ngIf="author.errors!['required']">Enter post author name</small>
+		</div>
+	</div>
+
+	<button
+		class="btn btn-block btn-dark"
+		type="submit"
+		[disabled]="form.invalid"
+	>
+		Create post
+	</button>
+</form>

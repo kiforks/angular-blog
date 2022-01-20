@@ -16,10 +16,22 @@ import { AuthService } from '../../services/auth/auth.service';
 	styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-	public form!: FormGroup;
-	public email!: AbstractControl;
-	public password!: AbstractControl;
+	public email: AbstractControl = new FormControl(null, [
+		Validators.email,
+		Validators.required,
+	]);
+
+	public password: AbstractControl = new FormControl(null, [
+		Validators.required,
+		Validators.minLength(6),
+	]);
+
 	public message = '';
+
+	public form: FormGroup = new FormGroup({
+		email: this.email,
+		password: this.password,
+	});
 
 	public submitted = false;
 
@@ -34,17 +46,6 @@ export class LoginComponent implements OnInit {
 			if ('login' in params) {
 				this.message = 'Please enter email/password';
 			}
-		});
-
-		this.form = new FormGroup({
-			email: new FormControl(null, [
-				Validators.email,
-				Validators.required,
-			]),
-			password: new FormControl(null, [
-				Validators.required,
-				Validators.minLength(6),
-			]),
 		});
 
 		this.email = this.form.get('email') as AbstractControl;
