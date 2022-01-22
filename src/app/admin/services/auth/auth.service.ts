@@ -15,7 +15,7 @@ export class AuthService {
 	constructor(private HttpClient: HttpClient) {}
 
 	public get token(): string | null {
-		const expiresDate = new Date(
+		const expiresDate: Date = new Date(
 			localStorage.getItem('firebase-token-expires') as string
 		);
 
@@ -41,7 +41,7 @@ export class AuthService {
 		this.setToken(null);
 	}
 
-	public isAuthenticated(): boolean {
+	public get isAuthenticated(): boolean {
 		return !!this.token;
 	}
 

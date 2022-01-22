@@ -44,7 +44,9 @@ export class LoginComponent implements OnInit {
 	public ngOnInit(): void {
 		this.ActivatedRoute.queryParams.subscribe((params: Params) => {
 			if ('login' in params) {
-				this.message = 'Please enter email/password';
+				this.message = 'Please enter the data';
+			} else if ('authFailed' in params) {
+				this.message = 'Session has expired, please re-enter the data';
 			}
 		});
 
