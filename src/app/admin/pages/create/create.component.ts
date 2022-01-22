@@ -22,9 +22,14 @@ export class CreateComponent implements OnInit {
 		Validators.required,
 	]);
 
+	public text: AbstractControl = new FormControl(null, [
+		Validators.required,
+	]);
+
 	public form: FormGroup = new FormGroup({
 		title: this.title,
 		author: this.author,
+		text: this.text,
 	});
 
 	public ngOnInit(): void {
@@ -42,5 +47,5 @@ export class CreateComponent implements OnInit {
 			text: this.form.value.text,
 			date: new Date(),
 		};
-	}
+  }
 }
