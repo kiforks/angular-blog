@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 
 import { Post } from '../../../shared/interfaces/post.interface';
+import { PostsService } from '../../../shared/services/posts/posts.service';
 
 @Component({
 	selector: 'create',
@@ -32,6 +33,8 @@ export class CreateComponent implements OnInit {
 		text: this.text,
 	});
 
+	constructor(private PostsService: PostsService) {}
+
 	public ngOnInit(): void {
 		this.title = this.form.get('title') as AbstractControl;
 		this.author = this.form.get('author') as AbstractControl;
@@ -47,5 +50,9 @@ export class CreateComponent implements OnInit {
 			text: this.form.value.text,
 			date: new Date(),
 		};
-  }
+
+		this.PostsService.create(post).subscribe((): void => {
+			this.form.reset();
+		});
+	}
 }
