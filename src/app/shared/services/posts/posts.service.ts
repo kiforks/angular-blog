@@ -26,4 +26,20 @@ export class PostsService {
 			})
 		);
 	}
+
+	public getAll(): Observable<Post[]> {
+		return this.HttpClient.get(
+			`${environment.firebaseDatabaseUrl}/posts.json`
+		).pipe(
+			map((response: { [key: string]: any }): Post[] => {
+				return Object.keys(response).map((key: string): Post => {
+					return {
+						...response[key],
+						id: key,
+						date: new Date(response[key].date),
+					};
+				});
+			})
+		);
+	}
 }
