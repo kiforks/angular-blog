@@ -9,6 +9,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SearchPostsPipe } from './pipes/search-posts/search-posts.pipe';
 
 @NgModule({
 	declarations: [
@@ -17,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 		CreateComponent,
 		LoginComponent,
 		EditComponent,
+		SearchPostsPipe,
 	],
 	imports: [SharedModule, AdminRouting, FormsModule, ReactiveFormsModule],
 	providers: [AuthGuard],

@@ -12,6 +12,7 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 export class DashboardComponent implements OnInit, OnDestroy {
 	public posts: Post[] | [] = [];
 	public postSubscription: Subscription | null = null;
+	public searchValue = '';
 
 	constructor(private postService: PostsService) {}
 
