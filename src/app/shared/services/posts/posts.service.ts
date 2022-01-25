@@ -48,4 +48,18 @@ export class PostsService {
 			`${environment.firebaseDatabaseUrl}/posts/${id}.json`
 		);
 	}
+
+	public getById(id: string): Observable<Post> {
+		return this.HttpClient.get<Post>(
+			`${environment.firebaseDatabaseUrl}/posts/${id}.json`
+		).pipe(
+			map((post: Post): Post => {
+				return {
+					...post,
+					id,
+					date: new Date(post.date),
+				};
+			})
+		);
+	}
 }
