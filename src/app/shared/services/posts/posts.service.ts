@@ -62,4 +62,11 @@ export class PostsService {
 			})
 		);
 	}
+
+	public update(post: Post): Observable<Post> {
+		return this.HttpClient.patch<Post>(
+			`${environment.firebaseDatabaseUrl}/posts/${post.id}.json`,
+			post
+		);
+	}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
 	AbstractControl,
 	FormControl,
@@ -6,7 +6,7 @@ import {
 	Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 
 import { Post } from '../../../shared/interfaces/post.interface';
 import { PostsService } from '../../../shared/services/posts/posts.service';
@@ -16,10 +16,13 @@ import { PostsService } from '../../../shared/services/posts/posts.service';
 	templateUrl: './edit.component.html',
 	styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, OnDestroy {
 	public form: FormGroup | null = null;
 	public title: AbstractControl | null = null;
 	public text: AbstractControl | null = null;
+	public post: Post | null = null;
+	public submitted = false;
+	public updateSubscription: Subscription | null = null;
 
 	constructor(
 		private ActivatedRoute: ActivatedRoute,
@@ -38,6 +41,7 @@ export class EditComponent implements OnInit {
 			.subscribe((post: Post): void => {
 				const { required } = Validators;
 
+				this.post = post;
 				this.title = new FormControl(post.title, required);
 				this.text = new FormControl(post.text, required);
 
@@ -46,5 +50,31 @@ export class EditComponent implements OnInit {
 					text: this.text,
 				});
 			});
+	}
+
+	public ngOnDestroy(): void {
+		if (this.updateSubscription) {
+			this.updateSubscription.unsubscribe();
+		}
+	}
+
+	public submit(): void {
+		if (this.form?.invalid) {
+			return;
+		}
+
+		this.submitted = true;
+
+		this.updateSubscription = this.updatePost();
+	}
+
+	public updatePost(): Subscription {
+		return this.PostsService.update({
+			...this.post!,
+			text: this.form?.value.text,
+			title: this.form?.value.title,
+		}).subscribe((): void => {
+			this.submitted = false;
+		});
 	}
 }
