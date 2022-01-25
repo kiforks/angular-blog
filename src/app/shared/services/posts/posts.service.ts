@@ -45,7 +45,7 @@ export class PostsService {
 
 	public remove(id: string): Observable<void> {
 		return this.HttpClient.delete<void>(
-			`${environment.firebaseDatabaseUrl}/posts${id}.json`
+			`${environment.firebaseDatabaseUrl}/posts/${id}.json`
 		);
 	}
 }
