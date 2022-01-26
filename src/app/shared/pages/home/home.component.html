@@ -1,5 +1,7 @@
-<div class="posts">
-	<user-post></user-post>
-	<user-post></user-post>
-	<user-post></user-post>
+<div class="posts" *ngIf="posts$ | async as posts; else loading">
+	<user-post *ngFor="let post of posts" [post]="post"></user-post>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Loading posts...</p>
+</ng-template>
