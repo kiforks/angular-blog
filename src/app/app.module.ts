@@ -1,3 +1,6 @@
+import '@angular/common/locales/global/fr';
+import '@angular/common/locales/global/ru';
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
