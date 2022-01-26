@@ -10,6 +10,7 @@ import { Observable, Subscription, switchMap } from 'rxjs';
 
 import { Post } from '../../../shared/interfaces/post.interface';
 import { PostsService } from '../../../shared/services/posts/posts.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
 	selector: 'edit',
@@ -26,7 +27,8 @@ export class EditComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private ActivatedRoute: ActivatedRoute,
-		private PostsService: PostsService
+		private PostsService: PostsService,
+		private AlertService: AlertService
 	) {}
 
 	public ngOnInit(): void {
@@ -75,6 +77,7 @@ export class EditComponent implements OnInit, OnDestroy {
 			title: this.form?.value.title,
 		}).subscribe((): void => {
 			this.submitted = false;
+			this.AlertService.success('Post has been updated');
 		});
 	}
 }

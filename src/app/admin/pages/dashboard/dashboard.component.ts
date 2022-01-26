@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Post } from '../../../shared/interfaces/post.interface';
 import { PostsService } from '../../../shared/services/posts/posts.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
 	selector: 'dashboard',
@@ -15,7 +16,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	public deleteSubscription: Subscription | null = null;
 	public searchValue = '';
 
-	constructor(private PostsService: PostsService) {}
+	constructor(
+		private PostsService: PostsService,
+		private AlertService: AlertService
+	) {}
 
 	public ngOnInit(): void {
 		this.postSubscription = this.PostsService.getAll().subscribe(
@@ -40,6 +44,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 			this.posts = this.posts.filter(
 				(post: Post): boolean => post.id !== id
 			);
+
+			this.AlertService.danger('Post has been deleted');
 		});
 	}
 }

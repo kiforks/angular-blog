@@ -8,6 +8,7 @@ import {
 
 import { Post } from '../../../shared/interfaces/post.interface';
 import { PostsService } from '../../../shared/services/posts/posts.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
 	selector: 'create',
@@ -33,7 +34,10 @@ export class CreateComponent implements OnInit {
 		text: this.text,
 	});
 
-	constructor(private PostsService: PostsService) {}
+	constructor(
+		private PostsService: PostsService,
+		private AlertService: AlertService
+	) {}
 
 	public ngOnInit(): void {
 		this.title = this.form.get('title') as AbstractControl;
@@ -42,6 +46,7 @@ export class CreateComponent implements OnInit {
 
 	public submit(): void {
 		if (this.form.invalid) {
+			return;
 		}
 
 		const post: Post = {
@@ -53,6 +58,7 @@ export class CreateComponent implements OnInit {
 
 		this.PostsService.create(post).subscribe((): void => {
 			this.form.reset();
+			this.AlertService.success('Post has been created!');
 		});
 	}
 }
