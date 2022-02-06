@@ -293,10 +293,23 @@ table {
 	a {
 		margin: 0 0.25rem;
 		padding: 0.45rem;
-		color: $color-white;
 
-		&:hover {
-			color: var(--light-color);
+		&.admin-page-link {
+			margin-left: auto;
+			color: $danger-color;
+			transition: color $transition-duration ease-in-out;
+
+			&:hover {
+				color: $danger-color-hover;
+			}
+		}
+
+		&:not(.admin-page-link) {
+			color: $color-white;
+
+			&:hover {
+				color: var(--light-color);
+			}
 		}
 	}
 
